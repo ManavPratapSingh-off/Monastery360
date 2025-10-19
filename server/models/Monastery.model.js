@@ -8,6 +8,7 @@ const Monastery = mongoose.model(
       location: { type: String, required: true },
       description: { type: String },
       images: [{ type: mongoose.Schema.Types.ObjectId, ref: "Image" }],
+      featured: { type: Boolean, default: false },
       manuscripts: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Manuscript" },
       ],

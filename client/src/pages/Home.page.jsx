@@ -1,13 +1,11 @@
 import React from "react";
 import NavbarComponent from "../components/Navbar.component.jsx";
 import Monasterycardcomponent from "../components/Monasterycard.component.jsx";
+import { useSelector } from "react-redux";
 
 function HomePage() {
-  const featuredMonasteries = [
-    { id: 1, name: "Golden Temple", location: "Amritsar, India" },
-    { id: 2, name: "Saint Catherine's Monastery", location: "Sinai, Egypt" },
-    { id: 3, name: "Meteora", location: "Greece" },
-  ];
+  const { monasteries } = useSelector((state) => state.monastery);
+  const featuredMonasteries = monasteries.filter((mon) => mon.featured) || [];
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -25,11 +23,13 @@ function HomePage() {
           Featured Monasteries
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {featuredMonasteries.map((monastery) => <Monasterycardcomponent monastery={monastery}/>)}
+          {featuredMonasteries.map((monastery) => (
+            <Monasterycardcomponent monastery={monastery} />
+          ))}
         </div>
       </section>
 
-      <NavbarComponent/>
+      <NavbarComponent />
     </div>
   );
 }

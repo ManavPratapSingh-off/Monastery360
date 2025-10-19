@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { get_images } from "../api/imagecalls.js";
+import { useSelector } from "react-redux";
 
 const GalleryPage = () => {
-  const [images, setImages] = useState([]);
+  const { images } = useSelector((state) => state.image);
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-gray-50 rounded-lg">
@@ -10,7 +11,7 @@ const GalleryPage = () => {
         Monastery Image Gallery
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {images.map((img, index) => (
+        {images?.map((img, index) => (
           <div
             key={index}
             className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
