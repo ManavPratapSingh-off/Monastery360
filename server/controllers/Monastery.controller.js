@@ -18,6 +18,15 @@ export const get_monasteries = async (req, res) => {
   }
 };
 
+export const get_monastery = async (req, res) => {
+  try {
+    const monastery = await Monastery.findById(req.params.id);
+    res.status(200).json(monastery);
+  } catch (e) {
+    res.status(404).send({ error: e.message ? e.message : e });
+  }
+};
+
 export const update_monastery = async (req, res) => {
   try {
     const monastery = await Monastery.findByIdAndUpdate(

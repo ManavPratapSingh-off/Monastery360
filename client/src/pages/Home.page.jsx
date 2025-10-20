@@ -2,8 +2,10 @@ import React from "react";
 import NavbarComponent from "../components/Navbar.component.jsx";
 import Monasterycardcomponent from "../components/Monasterycard.component.jsx";
 import { useSelector } from "react-redux";
+import useMonasteryData from "../hooks/useMonasteryData.js";
 
 function HomePage() {
+  useMonasteryData()
   const { monasteries } = useSelector((state) => state.monastery);
   const featuredMonasteries = monasteries.filter((mon) => mon.featured) || [];
 

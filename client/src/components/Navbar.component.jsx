@@ -28,6 +28,11 @@ function NavbarComponent() {
               Events
             </a>
           </li>
+          <li>
+            <a href="/archives" className="hover:underline">
+              Digital Archive
+            </a>
+          </li>
         </ul>
     </div>
   )

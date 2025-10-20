@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { get_images } from "../api/imagecalls.js";
 import { useSelector } from "react-redux";
+import useImageData from "../hooks/useImageData.js";
 
 const GalleryPage = () => {
+  useImageData()
   const { images } = useSelector((state) => state.image);
 
   return (

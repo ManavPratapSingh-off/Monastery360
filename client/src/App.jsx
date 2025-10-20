@@ -7,19 +7,21 @@ import MapPage from "./pages/Map.page.jsx";
 import useMonasteryData from "./hooks/useMonasteryData.js";
 import useEventData from "./hooks/useEventData.js";
 import useImageData from "./hooks/useImageData.js";
+import MonasteriesPage from "./pages/Monasteries.page.jsx";
+import EventsPage from "./pages/Events.page.jsx";
+import ArchivesPage from "./pages/Archives.page.jsx";
 
 function App() {
-  useMonasteryData()
-  useEventData()
-  useImageData()
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home"/>}/>
+      <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<HomePage />} />
-      <Route path="/monasteries" element={a}/>
-      <Route path="/monastery/:name" element={<MonasteryPage/>}/>
-      <Route path="/gallery" element={<GalleryPage/>}/>
-      <Route path="/map" element={<MapPage/>}/>
+      <Route path="/monasteries" element={<MonasteriesPage />} />
+      <Route path="/monastery/:name" element={<MonasteryPage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
+      <Route path="/map" element={<MapPage />} />
+      <Route path="/events" element={<EventsPage />} />
+      <Route path="/archives" element={<ArchivesPage />} />
     </Routes>
   );
 }
