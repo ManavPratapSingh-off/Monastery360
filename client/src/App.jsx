@@ -12,12 +12,15 @@ import EventsPage from "./pages/Events.page.jsx";
 import ArchivesPage from "./pages/Archives.page.jsx";
 
 function App() {
+  useMonasteryData();
+  useEventData();
+  useImageData();
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/monasteries" element={<MonasteriesPage />} />
-      <Route path="/monastery/:name" element={<MonasteryPage />} />
+      <Route path="/monastery/:id" element={<MonasteryPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/map" element={<MapPage />} />
       <Route path="/events" element={<EventsPage />} />

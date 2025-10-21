@@ -5,28 +5,37 @@ import { useSelector } from "react-redux";
 
 const MapPage = () => {
   const { monasteries } = useSelector((state) => state.monastery);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">
-        Monastery Locations Map
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-10 px-4">
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
+        🏯 Monastery Locations
       </h1>
-      <div className="w-full max-w-5xl h-96 rounded-lg shadow-lg overflow-hidden">
+
+      <div className="w-full max-w-6xl rounded-xl shadow-2xl overflow-hidden bg-white border border-gray-200">
         <MapContainer
-          center={[31.62, 74.8765]}
-          zoom={5}
+          center={[27.3389, 88.6065]}
+          zoom={10}
           scrollWheelZoom
-          className="h-full w-full"
+          className="h-96 md:h-[600px] w-full"
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {monasteries.map(({ id, name, position }) => (
-            <Marker key={id} position={position}>
-              <Popup>{name}</Popup>
+          {monasteries.map(({ id, name, geo }) => (
+            <Marker key={id} position={[geo.lat, geo.lng]}>
+              <Popup>
+                <span className="font-semibold text-gray-900">{name}</span>
+              </Popup>
             </Marker>
           ))}
         </MapContainer>
+      </div>
+
+      {/* Optional: Footer / Legend */}
+      <div className="mt-6 text-gray-600 text-sm">
+        Map data © OpenStreetMap contributors
       </div>
     </div>
   );

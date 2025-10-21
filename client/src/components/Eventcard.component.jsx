@@ -18,7 +18,7 @@ function EventCard({ event }) {
       </h3>
 
       {/* Event Date */}
-      <p className="text-sm text-gray-500 mb-2">📅 {formatDate(event.date)}</p>
+      <p className="text-sm text-gray-500 mb-2">📅 {formatDate(event.startDate)} - {formatDate(event.endDate)}</p>
 
       {/* Monastery (if populated) */}
       {event.monastery && (

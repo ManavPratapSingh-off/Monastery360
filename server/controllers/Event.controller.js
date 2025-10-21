@@ -9,7 +9,7 @@ export const post_event = async (req, res) => {
     );
     monastery.events.push(event._id);
     await monastery.save();
-    const populated_event = await Event.findById(event._id).populate("monastery", "_id name")
+    const populated_event = await Event.findById(event._id).populate("monastery", "_id name featured")
     res.status(201).json(populated_event);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -17,13 +17,13 @@ export const post_event = async (req, res) => {
 };
 
 export const get_events = async (req, res) => {
-  const events = await Event.find({}).populate("monastery", "_id name");
+  const events = await Event.find({}).populate("monastery", "_id name featured");
   res.status(200).send(events);
 };
 
 export const get_event = async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id).populate("monastery", "_id name");
+    const event = await Event.findById(req.params.id).populate("monastery", "_id name featured");
     if (!event) return res.status(404).json({ error: "Not found" });
     res.status(200).json(event);
   } catch (err) {

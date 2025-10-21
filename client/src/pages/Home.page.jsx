@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import useMonasteryData from "../hooks/useMonasteryData.js";
 
 function HomePage() {
-  useMonasteryData()
   const { monasteries } = useSelector((state) => state.monastery);
   const featuredMonasteries = monasteries.filter((mon) => mon.featured) || [];
 

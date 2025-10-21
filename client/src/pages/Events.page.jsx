@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import EventCard from "../components/Eventcard.component.jsx";
 import useEventData from "../hooks/useEventData.js";
+import EventCalendar from "../components/EventCalendar.component.jsx";
 
 function EventsPage() {
-  useEventData()
   const { events } = useSelector((state) => state.event);
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-5">
@@ -13,6 +13,9 @@ function EventsPage() {
         <h1 className="text-3xl font-bold text-center text-indigo-800 mb-10">
           Upcoming Events
         </h1>
+
+        {/* Event calendar */}
+        <EventCalendar events={events} />
 
         {/* Events Grid */}
         {events.length > 0 ? (

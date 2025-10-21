@@ -4,7 +4,8 @@ const Image = mongoose.model(
   "Image",
   new mongoose.Schema(
     {
-      url: { type: String, required: true },
+      fileUrl: { type: String, required: true }, // Cloudinary URL
+      publicId: { type: String, required: true }, // Cloudinary public ID
       caption: { type: String },
       monastery: { type: mongoose.Schema.Types.ObjectId, ref: "Monastery" },
     },

@@ -6,7 +6,10 @@ export const post_archive = async (req, res) => {
   try {
     console.log("req.file:", req.file);
     console.log("req.file.path:", req.file?.path);
-    console.log("file exists:", req.file ? fs.existsSync(req.file.path) : false);
+    console.log(
+      "file exists:",
+      req.file ? fs.existsSync(req.file.path) : false
+    );
     console.log("Content-Type header:", req.headers["content-type"]);
     const { title, filetype, tags, uploadedBy } = req.body;
     let cloud_response;
@@ -15,7 +18,9 @@ export const post_archive = async (req, res) => {
 
     console.log("cloud_response:", cloud_response);
     if (!cloud_response || !cloud_response.fileUrl) {
-      return res.status(500).json({ message: "Cloud upload returned no URL", cloud_response });
+      return res
+        .status(500)
+        .json({ message: "Cloud upload returned no URL", cloud_response });
     }
     const { fileUrl, publicId } = cloud_response;
     const archive = await Archive.create({
