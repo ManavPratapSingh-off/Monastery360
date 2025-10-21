@@ -4,6 +4,7 @@ import Archivecard from "../components/Archivecard.component.jsx";
 import { useDispatch } from "react-redux";
 import { setarchives } from "../redux/archiveslice.js";
 import ArchiveModal from "../components/ArchiveModal.component.jsx";
+import RedirectHome from "../components/RedirectHome.component.jsx";
 
 function ArchivesPage() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function ArchivesPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <RedirectHome/>
       <h1 className="text-3xl font-bold text-gray-900 mb-6">Digital Archive</h1>
 
       {/* Container for search form and add button */}

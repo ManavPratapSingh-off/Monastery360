@@ -2,12 +2,14 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useSelector } from "react-redux";
+import RedirectHome from "../components/RedirectHome.component";
 
 const MapPage = () => {
   const { monasteries } = useSelector((state) => state.monastery);
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-10 px-4">
+      <RedirectHome/>
       <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
         🏯 Monastery Locations
       </h1>

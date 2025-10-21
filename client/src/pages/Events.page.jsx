@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import EventCard from "../components/Eventcard.component.jsx";
 import useEventData from "../hooks/useEventData.js";
 import EventCalendar from "../components/EventCalendar.component.jsx";
+import RedirectHome from "../components/RedirectHome.component.jsx";
 
 function EventsPage() {
   const { events } = useSelector((state) => state.event);
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-5">
+      <RedirectHome/>
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
         <h1 className="text-3xl font-bold text-center text-indigo-800 mb-10">

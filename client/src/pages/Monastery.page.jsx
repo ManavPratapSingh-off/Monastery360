@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import m1 from "../assets/monastery1.jpg";
-import m2 from "../assets/monastery2.jpg";
-import m3 from "../assets/monastery3.jpg";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { get_monastery } from "../api/monasterycalls.js";
 import { useSelector } from "react-redux";
+import RedirectHome from "../components/RedirectHome.component.jsx";
 
 const MonasteryPage = () => {
+  const navigate = useNavigate();
   const monastery_id = useParams().id;
   const [monasteryInfo, setmonasteryInfo] = useState(null);
   const make_get_monastery_call = async () => {
@@ -23,7 +22,8 @@ const MonasteryPage = () => {
   const { images } = useSelector((state) => state.image);
 
   return (
-    <div className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-5xl mx-auto mb-40 p-6 bg-white rounded-lg shadow-md">
+      <RedirectHome/>
       <h1 className="text-4xl font-bold text-gray-900 mb-2">
         {monasteryInfo?.name}
       </h1>
@@ -36,15 +36,15 @@ const MonasteryPage = () => {
         <h3 className="text-2xl font-semibold mb-3 text-gray-800">Gallery</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {monasteryInfo?.images.map((img, index) => {
-            const im = images.find(i => i._id===img)
-              return (
-                <img
-                  key={index}
-                  src={im.fileUrl}
-                  alt={`Image ${index + 1} of ${im.monastery.name}`}
-                  className="rounded-lg shadow hover:scale-105 transition-transform"
-                />
-              );
+            const im = images.find((i) => i._id === img);
+            return (
+              <img
+                key={index}
+                src={im.fileUrl}
+                alt={`Image ${index + 1} of ${im.monastery.name}`}
+                className="rounded-lg shadow hover:scale-105 transition-transform"
+              />
+            );
           })}
         </div>
       </section>
@@ -55,20 +55,24 @@ const MonasteryPage = () => {
         </h3>
         <ul className="list-disc list-inside text-gray-700">
           {monasteryInfo?.events.map((event) => {
-            const ev = events.find(e => e._id===event)
-              return (
-                <li key={ev._id} className="mb-2 p-1 flex flex-col bg-[aliceblue] rounded-md" style={{listStyle : "none"}}>
-                  <span className="font-semibold">{ev.name}</span>
-                  <span className="flex gap-2"><time>{(new Date(ev.startDate)).toLocaleString()}</time>-<time>{(new Date(ev.endDate)).toLocaleString()}</time></span>
-                </li>
-              );
+            const ev = events.find((e) => e._id === event);
+            return (
+              <li
+                key={ev._id}
+                className="mb-2 p-1 flex flex-col bg-[aliceblue] rounded-md cursor-pointer"
+                style={{ listStyle: "none" }}
+                onClick={() => navigate(`/event/${ev._id}`)}
+              >
+                <span className="font-semibold">{ev.name}</span>
+                <span className="flex gap-2">
+                  <time>{new Date(ev.startDate).toLocaleString()}</time>-
+                  <time>{new Date(ev.endDate).toLocaleString()}</time>
+                </span>
+              </li>
+            );
           })}
         </ul>
       </section>
-
-      <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
-        Book Your Visit
-      </button>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function EventCard({ event }) {
+  const navigate = useNavigate();
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-IN", {
@@ -18,7 +20,9 @@ function EventCard({ event }) {
       </h3>
 
       {/* Event Date */}
-      <p className="text-sm text-gray-500 mb-2">📅 {formatDate(event.startDate)} - {formatDate(event.endDate)}</p>
+      <p className="text-sm text-gray-500 mb-2">
+        📅 {formatDate(event.startDate)} - {formatDate(event.endDate)}
+      </p>
 
       {/* Monastery (if populated) */}
       {event.monastery && (
@@ -35,7 +39,10 @@ function EventCard({ event }) {
       )}
 
       {/* Action Button */}
-      <button className="mt-auto px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 transition">
+      <button
+        onClick={() => navigate(`/event/${event._id}`)}
+        className="mt-auto px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 transition"
+      >
         View Details
       </button>
     </div>

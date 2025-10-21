@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Monasterycardcomponent from "../components/Monasterycard.component.jsx";
 import { useSelector } from "react-redux";
+import RedirectHome from "../components/RedirectHome.component.jsx";
 
 function MonasteriesPage() {
   const { monasteries } = useSelector((state) => state.monastery);
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-5">
+      <RedirectHome/>
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
         <h1 className="text-3xl font-bold text-center text-indigo-800 mb-10">
