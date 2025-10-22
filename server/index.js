@@ -12,13 +12,15 @@ import archive_routes from "./routes/Archive.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-app.use(express.json());
+
+console.log("Allowed origin: ", process.env.CLIENT_URL);
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
+app.use(express.json());
 
 connect_DB();
 
