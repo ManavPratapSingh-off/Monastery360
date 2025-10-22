@@ -8,13 +8,14 @@ const MapPage = () => {
   const { monasteries } = useSelector((state) => state.monastery);
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-10 px-4">
-      <RedirectHome/>
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-12 px-6">
+      <RedirectHome />
+
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-green-900 mb-10 text-center tracking-wide">
         🏯 Monastery Locations
       </h1>
 
-      <div className="w-full max-w-6xl rounded-xl shadow-2xl overflow-hidden bg-white border border-gray-200">
+      <div className="w-full max-w-6xl rounded-2xl shadow-xl overflow-hidden bg-white border border-green-200">
         <MapContainer
           center={[27.3389, 88.6065]}
           zoom={10}
@@ -28,7 +29,7 @@ const MapPage = () => {
           {monasteries.map(({ id, name, geo }) => (
             <Marker key={id} position={[geo.lat, geo.lng]}>
               <Popup>
-                <span className="font-semibold text-gray-900">{name}</span>
+                <span className="font-semibold text-green-900">{name}</span>
               </Popup>
             </Marker>
           ))}
@@ -36,7 +37,7 @@ const MapPage = () => {
       </div>
 
       {/* Optional: Footer / Legend */}
-      <div className="mt-6 text-gray-600 text-sm">
+      <div className="mt-6 text-green-700 text-sm text-center">
         Map data © OpenStreetMap contributors
       </div>
     </div>

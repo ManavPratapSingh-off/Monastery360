@@ -7,27 +7,31 @@ import RedirectHome from "../components/RedirectHome.component.jsx";
 
 function EventsPage() {
   const { events } = useSelector((state) => state.event);
+
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-5">
-      <RedirectHome/>
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-12 px-6">
+      <RedirectHome />
+
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
-        <h1 className="text-3xl font-bold text-center text-indigo-800 mb-10">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-center text-green-900 mb-12 tracking-wide">
           Upcoming Events
         </h1>
 
         {/* Event calendar */}
-        <EventCalendar events={events} />
+        <div className="mb-12 bg-white p-6 rounded-2xl shadow-lg">
+          <EventCalendar events={events} />
+        </div>
 
         {/* Events Grid */}
         {events.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {events.map((event) => (
               <EventCard key={event._id} event={event} />
             ))}
           </div>
         ) : (
-          <div className="text-center text-gray-500 text-lg">
+          <div className="text-center text-green-800 text-lg">
             No events found.
           </div>
         )}

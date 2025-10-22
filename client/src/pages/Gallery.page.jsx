@@ -9,15 +9,19 @@ const GalleryPage = () => {
   const { images } = useSelector((state) => state.image);
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-gray-50 rounded-lg">
-      <RedirectHome/>
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">
-        Monastery Image Gallery
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
-        {images.map((img) => (
-          <ImageCard image={img} />
-        ))}
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-12 px-6">
+      <RedirectHome />
+
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-green-900 mb-8 text-center tracking-wide">
+          Monastery Image Gallery
+        </h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {images.map((img) => (
+            <ImageCard image={img} />
+          ))}
+        </div>
       </div>
     </div>
   );

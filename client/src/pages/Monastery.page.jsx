@@ -22,19 +22,24 @@ const MonasteryPage = () => {
   const { images } = useSelector((state) => state.image);
 
   return (
-    <div className="max-w-5xl mx-auto mb-40 p-6 bg-white rounded-lg shadow-md">
-      <RedirectHome/>
-      <h1 className="text-4xl font-bold text-gray-900 mb-2">
+    <div className="max-w-5xl mx-auto mb-40 p-8 bg-green-50 rounded-xl shadow-lg">
+      <RedirectHome />
+
+      {/* Monastery Info */}
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-green-900 mb-2">
         {monasteryInfo?.name}
       </h1>
-      <h2 className="text-xl text-indigo-700 mb-4">
-        {monasteryInfo?.location}
-      </h2>
-      <p className="text-gray-700 mb-6">{monasteryInfo?.description}</p>
+      <h2 className="text-xl text-green-800 mb-4">{monasteryInfo?.location}</h2>
+      <p className="text-green-700 mb-8 leading-relaxed">
+        {monasteryInfo?.description}
+      </p>
 
-      <section className="mb-8">
-        <h3 className="text-2xl font-semibold mb-3 text-gray-800">Gallery</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Gallery */}
+      <section className="mb-10">
+        <h3 className="text-2xl font-semibold mb-4 text-green-900 border-b border-green-300 pb-2">
+          Gallery
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {monasteryInfo?.images.map((img, index) => {
             const im = images.find((i) => i._id === img);
             return (
@@ -42,29 +47,31 @@ const MonasteryPage = () => {
                 key={index}
                 src={im.fileUrl}
                 alt={`Image ${index + 1} of ${im.monastery.name}`}
-                className="rounded-lg shadow hover:scale-105 transition-transform"
+                className="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
               />
             );
           })}
         </div>
       </section>
 
-      <section className="mb-8">
-        <h3 className="text-2xl font-semibold mb-3 text-gray-800">
+      {/* Upcoming Events */}
+      <section className="mb-10">
+        <h3 className="text-2xl font-semibold mb-4 text-green-900 border-b border-green-300 pb-2">
           Upcoming Events
         </h3>
-        <ul className="list-disc list-inside text-gray-700">
+        <ul className="space-y-4">
           {monasteryInfo?.events.map((event) => {
             const ev = events.find((e) => e._id === event);
             return (
               <li
                 key={ev._id}
-                className="mb-2 p-1 flex flex-col bg-[aliceblue] rounded-md cursor-pointer"
-                style={{ listStyle: "none" }}
+                className="flex flex-col p-4 bg-white rounded-xl shadow hover:shadow-lg cursor-pointer transition-shadow duration-300"
                 onClick={() => navigate(`/event/${ev._id}`)}
               >
-                <span className="font-semibold">{ev.name}</span>
-                <span className="flex gap-2">
+                <span className="font-semibold text-green-900 text-lg">
+                  {ev.name}
+                </span>
+                <span className="flex gap-2 text-green-700 mt-1 text-sm">
                   <time>{new Date(ev.startDate).toLocaleString()}</time>-
                   <time>{new Date(ev.endDate).toLocaleString()}</time>
                 </span>
