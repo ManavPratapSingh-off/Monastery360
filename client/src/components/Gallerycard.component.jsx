@@ -8,17 +8,17 @@ const ImageCard = ({ image }) => {
     <div
       onClick={() => navigate(`/monastery/${image.monastery._id}`)}
       key={image._id}
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      className="bg-green-50 rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer"
     >
       <img
         src={image.fileUrl}
         alt={image.caption}
-        className="w-full h-56 object-cover"
+        className="w-full h-56 object-cover rounded-t-2xl"
       />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold">{image.caption}</h3>
-        <p className="text-gray-600 mt-1">Monastery: {image.monastery.name}</p>
-        <p className="text-gray-500 text-sm">{image.monastery.location}</p>
+      <div className="p-4 flex flex-col gap-1">
+        <h3 className="text-lg font-bold text-green-900">{image.caption}</h3>
+        <p className="text-green-800 text-sm">🏯 {image.monastery.name}</p>
+        <p className="text-green-700 text-sm">{image.monastery.location}</p>
       </div>
     </div>
   );

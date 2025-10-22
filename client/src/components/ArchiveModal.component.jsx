@@ -22,9 +22,6 @@ function ArchiveModal({ setopenModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data:", input);
-    // TODO: handle file upload API call here
-
     try {
       const formdata = new FormData();
       formdata.append("title", input.title);
@@ -51,27 +48,20 @@ function ArchiveModal({ setopenModal }) {
   }, []);
 
   return (
-    <div
-      className="
-  fixed inset-0 z-[1]
-  bg-black/50 backdrop-blur-sm
-  flex items-center justify-center 
-  p-4
-  overflow-hidden
-"
-    >
-      {/* Your existing modal code goes here */}
+    <div className="fixed inset-0 z-[50] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-hidden">
       <div
         ref={modal_ref}
-        className="w-[95%] lg:max-w-[60%] h-[600px] bg-white rounded-2xl px-8 flex flex-col justify-center items-center overflow-hidden relative z-[2]"
+        className="w-[95%] lg:max-w-[60%] h-[600px] bg-white rounded-2xl px-8 py-6 flex flex-col justify-center items-center overflow-auto relative shadow-xl"
       >
-        <h2 className="text-2xl font-bold mb-4">Upload Archive</h2>
-        <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
+        <h2 className="text-3xl font-extrabold text-green-900 mb-6 text-center">
+          Upload Archive
+        </h2>
+        <form className="w-full flex flex-col gap-5" onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
-            placeholder="Name"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Your Name"
+            className="p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
             value={input.name}
             onChange={handleChange}
             required
@@ -80,7 +70,7 @@ function ArchiveModal({ setopenModal }) {
             type="text"
             name="title"
             placeholder="Title"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
             value={input.title}
             onChange={handleChange}
             required
@@ -88,7 +78,7 @@ function ArchiveModal({ setopenModal }) {
           <input
             type="file"
             name="file"
-            className="p-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
             onChange={handleChange}
             required
           />
@@ -96,13 +86,13 @@ function ArchiveModal({ setopenModal }) {
             type="text"
             name="tags"
             placeholder="Tags (comma separated)"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
             value={input.tags}
             onChange={handleChange}
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2"
+            className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full shadow hover:bg-green-700 transition mt-2"
           >
             Upload
           </button>

@@ -4,17 +4,14 @@ import { useNavigate } from "react-router-dom";
 function Monasterycardcomponent({ monastery }) {
   const navigate = useNavigate();
   return (
-    <div
-      key={monastery._id}
-      className="bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition shadow-gray-300"
-    >
-      <h3 className="text-xl font-semibold text-indigo-700 mb-1">
+    <div className="bg-green-50 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col h-full">
+      <h3 className="text-xl font-bold text-green-900 mb-2">
         {monastery.name}
       </h3>
-      <p className="text-gray-600">{monastery.location}</p>
+      <p className="text-sm text-green-700 mb-4">{monastery.location}</p>
       <button
-        className="mt-3 inline-block px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 transition"
         onClick={() => navigate(`/monastery/${monastery._id}`)}
+        className="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded-full shadow hover:bg-green-700 transition"
       >
         View Details
       </button>

@@ -13,27 +13,25 @@ function EventCard({ event }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition shadow-gray-300">
+    <div className="bg-green-50 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col h-full">
       {/* Event Name */}
-      <h3 className="text-xl font-semibold text-indigo-700 mb-2">
-        {event.name}
-      </h3>
+      <h3 className="text-xl font-bold text-green-900 mb-2">{event.name}</h3>
 
       {/* Event Date */}
-      <p className="text-sm text-gray-500 mb-2">
+      <p className="text-sm text-green-700 mb-2">
         📅 {formatDate(event.startDate)} - {formatDate(event.endDate)}
       </p>
 
       {/* Monastery (if populated) */}
       {event.monastery && (
-        <p className="text-sm text-gray-600 mb-2">
+        <p className="text-sm text-green-800 mb-2">
           🏯 <span className="font-medium">{event.monastery.name}</span>
         </p>
       )}
 
       {/* Description */}
       {event.description && (
-        <p className="text-gray-700 text-sm mb-4 line-clamp-3">
+        <p className="text-green-700 text-sm mb-4 line-clamp-3">
           {event.description}
         </p>
       )}
@@ -41,7 +39,7 @@ function EventCard({ event }) {
       {/* Action Button */}
       <button
         onClick={() => navigate(`/event/${event._id}`)}
-        className="mt-auto px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 transition"
+        className="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded-full shadow hover:bg-green-700 transition"
       >
         View Details
       </button>
