@@ -37,21 +37,19 @@ function ArchivesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-12 px-6">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-8 sm:py-12 px-4 sm:px-6">
       <RedirectHome />
 
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-green-900 mb-8 text-center tracking-wide">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-green-900 mb-6 sm:mb-8 text-center tracking-wide">
           Digital Archive
         </h1>
 
-        {/* Container for search form and add button */}
-        <div className="mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Search Form */}
-          <form className="flex-1 flex gap-2" onSubmit={make_get_archive_call}>
+        <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+          <form className="flex-1 flex flex-col sm:flex-row gap-2" onSubmit={make_get_archive_call}>
             <input
               type="text"
-              placeholder="Search archives by title or tags..."
+              placeholder="Search archives..."
               className="flex-1 p-3 border border-green-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -64,7 +62,6 @@ function ArchivesPage() {
             </button>
           </form>
 
-          {/* Add Archive Button */}
           <button
             onClick={() => setopenModal(true)}
             className="px-6 py-3 bg-green-600 text-white font-semibold rounded-xl shadow hover:bg-green-700 transition"
@@ -73,9 +70,8 @@ function ArchivesPage() {
           </button>
         </div>
 
-        {/* Archive Grid */}
         {filteredArchives.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
             {filteredArchives.map((archive) => (
               <Archivecard key={archive._id} archive={archive} />
             ))}

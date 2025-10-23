@@ -9,12 +9,12 @@ function HomePage() {
   const featuredMonasteries = monasteries.filter((mon) => mon.featured) || [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 p-6">
-      <header className="mb-12 text-center">
-        <h1 className="text-5xl font-extrabold text-green-900 mb-3 tracking-wide">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 p-4 sm:p-6">
+      <header className="mb-8 sm:mb-12 text-center px-4">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-green-900 mb-3 tracking-wide">
           Welcome to Monastery360
         </h1>
-        <p className="text-green-800 text-lg max-w-xl mx-auto">
+        <p className="text-green-800 text-base sm:text-lg max-w-xl mx-auto">
           Explore the serene and historic monasteries of Sikkim, and book events
           that immerse you in spiritual experiences.
         </p>
