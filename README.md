@@ -15,11 +15,12 @@ A comprehensive platform for exploring and experiencing Sikkim's monasteries dig
 
 ### For Administrators
 
-- **Content Management**: Add and update monastery information
-- **Event Management**: Schedule and manage monastery events
-- **Archive Management**: Upload and organize digital archives
-- **Image Gallery Control**: Curate and manage monastery images
-- **Booking Overview**: Track and manage event bookings
+- **Content Management**: Add and update monastery information (done via direct API requests)  
+- **Event Management**: Schedule and manage monastery events (done via direct API requests)  
+- **Archive Management**: Upload and organize digital archives (done via direct API requests)  
+- **Image Gallery Control**: Curate and manage monastery images (done via direct API requests)  
+- **Booking Overview**: Track and manage event bookings (done via direct API requests)
+
 
 ## 🚀 Live Demo
 
