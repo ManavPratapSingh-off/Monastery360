@@ -33,12 +33,18 @@ console.log("Cloudinary config loaded:", {
   api_secret_present: !!match.groups.api_secret,
 });
 
-const upload_to_cloud = async (file) => {
+const upload_to_cloud = async (file, isPublic = false) => {
   try {
     const localPath = path.resolve(file.path);
-    console.log("Uploading file:", localPath, "exists:", fs.existsSync(localPath));
+    console.log(
+      "Uploading file:",
+      localPath,
+      "exists:",
+      fs.existsSync(localPath)
+    );
     const response = await cloudinary.uploader.upload(localPath, {
       resource_type: "auto",
+      type: isPublic ? "upload" : "authenticated",
     });
     console.log("Upload successful:", response.secure_url);
     return { fileUrl: response.secure_url, publicId: response.public_id };

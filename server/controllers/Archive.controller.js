@@ -13,7 +13,7 @@ export const post_archive = async (req, res) => {
     console.log("Content-Type header:", req.headers["content-type"]);
     const { title, filetype, tags, uploadedBy } = req.body;
     let cloud_response;
-    if (req.file) cloud_response = await upload_to_cloud(req.file);
+    if (req.file) cloud_response = await upload_to_cloud(req.file, true);
     else return res.status(404).json({ message: "No Media File Detected" });
 
     console.log("cloud_response:", cloud_response);
